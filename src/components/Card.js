@@ -14,7 +14,7 @@ function Card() {
     <div className="flex flex-col items-center justify-center bg-white w-screen h-screen">
       <div className="flex flex-col bg-white rounded shadow-lg p-20 mt-12">
         <h2 className="text-center font-bold mb-5">Ether Balance</h2>
-        <label className="font-semibold text-xs mb-2" htmlFor="ethField">
+        <label className="font-semibold text-sm mb-2" htmlFor="ethField">
           Wallet Address or ETH Name
         </label>
         <input
@@ -29,7 +29,7 @@ function Card() {
           onClick={onShowBalancePressed}
           className="flex items-center justify-center h-12 px-6 w-56 bg-purple-500 mt-8 m-auto mb-4 rounded font-semibold text-md text-white hover:bg-purple-700"
         >
-          Show address balance
+          Show Address Balance
         </button>
         {!balance ? (
           <svg
