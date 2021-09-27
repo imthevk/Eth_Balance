@@ -1,12 +1,31 @@
 // import React from "react";
-import Fortmatic from "fortmatic";
-import { ethers } from "ethers";
+var Web3 = require("web3");
 
-function useEthBalance() {
-  const fm = new Fortmatic("pk_live_F2294B5CFBDBF8CE", "rinkeby");
-  const provider = new ethers.providers.Web3Provider(fm.getProvider());
-  const signer = provider.getSigner();
-  console.log(signer);
+const url =
+  "https://eth-mainnet.alchemyapi.io/v2/r9vdxOHpNvlgAsB1RhHWtW03Aqyw974L";
+
+const web3 = new Web3(url);
+
+// Test Address - 0x73EAC38D3d5C31d1340494197d7E90CF80116F08
+
+async function ethBalanceFromHex(hexAddress) {
+  try {
+    let weiBal = await web3.eth.getBalance(hexAddress);
+    return web3.utils.fromWei(weiBal, "ether").toString();
+  } catch (e) {
+    alert("Please enter a valid address");
+  }
 }
 
-export default useEthBalance;
+export default async function fetchBalance(address) {
+  try {
+    if (address.endsWith(".eth")) {
+      let hexAddress = await web3.eth.ens.getAddress(address);
+      return await ethBalanceFromHex(hexAddress);
+    } else {
+      return await ethBalanceFromHex(address);
+    }
+  } catch (e) {
+    console.log(e);
+  }
+}
