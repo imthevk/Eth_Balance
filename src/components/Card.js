@@ -31,7 +31,7 @@ function Card() {
         >
           Show address balance
         </button>
-        {field === "" ? (
+        {!balance ? (
           <svg
             className="flex mt-4 justify-center m-auto"
             width="51px"
