@@ -45,7 +45,7 @@ function TokenCard() {
           onClick={showTokenBalPressed}
           className="flex items-center justify-center h-12 px-6 w-56 bg-purple-500 mt-8 m-auto mb-4 rounded font-semibold text-md text-white hover:bg-purple-700"
         >
-          Show Address Balance
+          Show Token Balance
         </button>
 
         {isLoading ? (
